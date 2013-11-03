@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>jQuery HealthData</title>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery.ui.base.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/cupertino/jquery-ui.css" media="screen" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+<script type="text/javascript" src="jquery.ui.healthdata.js"></script>
+<script type="text/javascript" language="javascript">
+$(document).ready(function() {
+	$('#bp').healthdata({elemsForHtml: {'map': '#bpstring'}});
+	$('#hr').healthdata({type: 'hr'});
+	$('#wt').healthdata({type: 'weight', refElem: {'m': '#ht'}});
+	$('#ht').healthdata({type: 'height', setValues: {gender: 'm'}, refElem: {'kg': '#wt'}, elemsForHtml: {'bmi': '#bmispan', 'bsa': '#bsaspan', 'lbw': '#lbwspan', 'ibw': '#ibwspan'}});
+});
+</script>
+<style>
+.widget-bp {
+	display: block;
+	width: 80px;
+}
+.healthdata-bp {
+	text-align: center;
+    width: 40px;
+    font-size: 14px;
+}
+.systolic {
+    border-bottom: 2px solid black;
+    clear: both;
+    display: inline-block;
+    float: left;
+}
+.diastolic {
+    clear: both;
+    display: inline-block;
+    float: left;
+}
+.pulse-button {
+    margin: 0 0 0 10px;
+    top: -4px;
+}
+.pulse-button-text {
+    font-size: 10px;
+    padding: 4px 3px 2px 8px;
+}
+.scale-choose {
+    display: block;
+    font-size: 10px;
+    padding: 5px;
+}
+.healthdata-wt {
+    width: 200px;
+    text-align: center;
+}
+.healthdata-ht {
+    width: 200px;
+    text-align: center;
+}
+.scalelabel {
+	padding: 2px 8px 2px 5px;
+}
+/* Need to put this into global healthdata widget style class */
+input {
+    text-align: center;
+}
+</style>
+</head>
+<body>
+<h2>Introduction</h2>
+<p>The HealthData JQuery UI Plugin, has been developed for front-end management of health-related data.<br/>
+The plugin aims to
+<ul>
+<li>Ease creation of form inputs,</li>
+<li>Improve presentation of data,</li>
+<li>Perform simple client-side calculations</li>
+</ul>
+<h2>Requirements</h2>
+<p>
+jquery 1.7+<br/>
+jqueryUI 1.8.16+
+</p>
+<h2>Basic Usage</h2>
+<p><code>$(document).ready(function() {<br />
+&nbsp;  $('#input').healthdata();<br />
+});</code> </p>
+<p>Where #input is an &lt;input&gt; field.</p>
+<h2>Parameters</h2>
+<p>&nbsp;</p>
+<h2>Examples</h2>
+<div>
+  <h3>Blood Pressure</h3>
+<input type="text" id="bp" />
+</div><br/>
+MAP = <span id="bpstring"></span>
+<div>
+<h3>Heart Rate</h3>
+<input type="text" id="hr" />
+</div>
+<div>
+<h3>Weight</h3>
+<input type="text" id="wt" />
+</div>
+<div>
+<h3>Height</h3>
+<input type="text" id="ht" />
+</div>
+<div>
+<h3>Calculated Values</h3>
+BMI = <span id="bmispan"></span><br/>
+BSA = <span id="bsaspan"></span><br/>
+LBW = <span id="lbwspan"></span><br/>
+IBW = <span id="ibwspan"></span><br/>
+</div>
+</body>
+</html>
